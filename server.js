@@ -1,7 +1,7 @@
 import { sequelize } from "./config/db.config.js"
 import  clc  from "cli-color"
 import { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp } from "./controllers/bootcamp.controller.js"
-import { createUser } from "./controllers/user.controller.js"
+import { createUser, findUserById } from "./controllers/user.controller.js"
 
 
 ( async ()=>{
@@ -34,9 +34,12 @@ import { createUser } from "./controllers/user.controller.js"
         // console.log(JSON.parse(JSON.stringify(bootcampFound)))
 
         //OBTENER USUARIOS CON SUS BOOTCAMP
-        const allUsersBootcamp = await findAllUsersBootcamp(3)
-        console.log(JSON.parse(JSON.stringify(allUsersBootcamp)))
+        // const allUsersBootcamp = await findAllUsersBootcamp(3)
+        // console.log(JSON.parse(JSON.stringify(allUsersBootcamp)))
 
+        //OBTENER LOS BOOTCAMPS DE UN USUARIO
+        const bootcampsUser = await findUserById(3)
+        console.log(JSON.parse(JSON.stringify(bootcampsUser)))
 
         console.log(clc.green("Conexión a base de datos éxitosa"))
     } catch(err){
