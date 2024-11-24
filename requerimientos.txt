@@ -8,5 +8,5 @@
 - Controllers bootcamp
     OK - Crear y guardar un nuevo bootcamp llamado createBootcamp()
     OK - Agregar un usuario al bootcamp llamado addUserToBootcamp()
-    - Obtener los bootcamps por ID llamado findById()
+    OK - Obtener los bootcamps por ID llamado findByIdBootcamp()
     - Obtener todos los usuarios incluyendo los bootcamp llamado findAll()

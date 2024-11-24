@@ -1,6 +1,6 @@
 import { sequelize } from "./config/db.config.js"
 import  clc  from "cli-color"
-import { createBootcamp, addUserToBootcamp } from "./controllers/bootcamp.controller.js"
+import { createBootcamp, addUserToBootcamp, findByIdBootcamp } from "./controllers/bootcamp.controller.js"
 import { createUser } from "./controllers/user.controller.js"
 
 
@@ -19,7 +19,11 @@ import { createUser } from "./controllers/user.controller.js"
         // console.log(user1)
 
         //AGREGA USUARIO A BOOTCAMP
-        await addUserToBootcamp(3,3)
+        //await addUserToBootcamp(3,3)
+
+        //CONSULTAR POR ID BOOTCAMP ----->
+        const bootcampFound =  await findByIdBootcamp(3)
+        console.log(JSON.parse(JSON.stringify(bootcampFound)))
 
 
         console.log(clc.green("Conexión a base de datos éxitosa"))

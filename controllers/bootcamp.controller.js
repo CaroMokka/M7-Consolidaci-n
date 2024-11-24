@@ -30,7 +30,22 @@ const addUserToBootcamp = (id_bootcamp, id_user) => {
     }
   });
 };
-// const findById = () => {}
+const findByIdBootcamp = (id_bootcamp) => {
+    return new Promise(async (resolve, reject)=>{
+        try{
+            const bootcamp = await Bootcamp.findByPk(id_bootcamp)
+            if(!bootcamp){
+                return reject("Id de bootcamp ingresado no existe en los registros")
+            }
+            resolve(bootcamp)
+ 
+        } catch(err) {
+            reject(err)
+        }
+    })
+
+}
+
 // const findAll = () => {}
 
-export { createBootcamp, addUserToBootcamp };
+export { createBootcamp, addUserToBootcamp, findByIdBootcamp };
