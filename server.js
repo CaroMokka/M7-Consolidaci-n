@@ -1,6 +1,6 @@
 import { sequelize } from "./config/db.config.js"
 import  clc  from "cli-color"
-import { createBootcamp, addUserToBootcamp, findByIdBootcamp } from "./controllers/bootcamp.controller.js"
+import { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp } from "./controllers/bootcamp.controller.js"
 import { createUser } from "./controllers/user.controller.js"
 
 
@@ -17,13 +17,25 @@ import { createUser } from "./controllers/user.controller.js"
         //CREAR USUARIO ---->
         // const user1 = await createUser({ firstName: "Carolina", lastName: "Araya", email: "caro@gmail.com" })
         // console.log(user1)
+        // const user2 = await createUser({ firstName: "Josefa", lastName: "Almonacid", email: "jose@gmail.com" })
+        // console.log(user2)
+        // const user3 = await createUser({ firstName: "claudio", lastName: "Gutierrez", email: "claudio@gmail.com" })
+        // console.log(user3)
 
         //AGREGA USUARIO A BOOTCAMP
         //await addUserToBootcamp(3,3)
+        // await addUserToBootcamp(2,3)
+        // await addUserToBootcamp(3,4)
+        // await addUserToBootcamp(3,5)
+        // await addUserToBootcamp(2,5)
 
         //CONSULTAR POR ID BOOTCAMP ----->
-        const bootcampFound =  await findByIdBootcamp(3)
-        console.log(JSON.parse(JSON.stringify(bootcampFound)))
+        // const bootcampFound =  await findByIdBootcamp(3)
+        // console.log(JSON.parse(JSON.stringify(bootcampFound)))
+
+        //OBTENER USUARIOS CON SUS BOOTCAMP
+        const allUsersBootcamp = await findAllUsersBootcamp(3)
+        console.log(JSON.parse(JSON.stringify(allUsersBootcamp)))
 
 
         console.log(clc.green("Conexión a base de datos éxitosa"))

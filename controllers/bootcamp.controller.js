@@ -46,6 +46,21 @@ const findByIdBootcamp = (id_bootcamp) => {
 
 }
 
-// const findAll = () => {}
+const findAllUsersBootcamp = (id_bootcamp) => {
+    return new Promise( async (resolve, reject)=>{
+        try{
+            const bootcamp = await Bootcamp.findByPk(id_bootcamp, {
+                include: {
+                    model: User,
+                    as: "users"
+                }
+            })
+            resolve(bootcamp)
+        } catch(err) {
+            reject(err)
+        }
 
-export { createBootcamp, addUserToBootcamp, findByIdBootcamp };
+    })
+}
+
+export { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp };
