@@ -1,4 +1,5 @@
 import { Bootcamp, User } from "../models/index.js";
+import clc from "cli-color"
 const createUser = (dataUser) => {
     return new Promise( async (resolve, reject)=>{
         try{
@@ -19,7 +20,7 @@ const findUserById = (id_user) => {
             }
         })
         if(!user){
-            console.log("Id de usuario no existe en los registros.")
+            console.log(clc.red("Id de usuario no existe en los registros."))
         }
         resolve(user)
        } catch(err){
@@ -28,5 +29,25 @@ const findUserById = (id_user) => {
 
     })
 }
+const findAll = () => {
+    return new Promise( async (resolve, reject)=>{
+        try{
+            const users = await User.findAll({
+                include: {
+                    model: Bootcamp,
+                    as: "bootcamps"
+                }
+            })
+            const bootcamps = await Bootcamp.findAll({
+                include: {
+                    model: User,
+                    as: "users"
+                }
+            })
+            resolve({users, bootcamps})
+            //resolve({usersBootcamps, bootcampsUsers})
+        }catch(err){reject(err)}
+    })
+}
 
-export { createUser, findUserById }
+export { createUser, findUserById, findAll }
