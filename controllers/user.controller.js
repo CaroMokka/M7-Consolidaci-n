@@ -63,5 +63,20 @@ const updateUserById = (id_user, dataUser) => {
     }
   });
 };
+const deleteUserById = (id_user) => {
+    return new Promise( async (resolve, reject)=>{
+        try{
+            const userDeleted = await User.findByPk(id_user)
+            if(!userDeleted){
+                reject({ success: false, message: "Usuario no encontrado" })
+            }
+            await userDeleted.destroy()
+            
+            resolve({ success: true, message: "Usuario eliminado con éxito", data: userDeleted })
+        }catch(err){
+            reject({ success: false, message: "Error en la eliminación de usuario", error: err })
+        }
+    })
+}
 
-export { createUser, findUserById, findAll, updateUserById };
+export { createUser, findUserById, findAll, updateUserById, deleteUserById };
