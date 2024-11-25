@@ -5,6 +5,7 @@ import {
   addUserToBootcamp,
   findByIdBootcamp,
   findAllUsersBootcamp,
+  findByIdBootcampWithUsers,
 } from "./controllers/bootcamp.controller.js";
 import {
   createUser,
@@ -20,29 +21,40 @@ import { User } from "./models/user.model.js";
     await sequelize.sync({ alter: true });
     // const listadoBootcamps = await Bootcamp.findAll()
     //CREAR BOOTCAMP ---->
-    // const bootcamp1 = await createBootcamp({ title: "Fullstack Javascript", cue: "4", description: "Es un programa intensivo y práctico diseñado para enseñar los fundamentos y aplicaciones avanzadas de JavaScript." })
+    // const bootcamp1 = await createBootcamp({ title: "Introduciendo El Bootcamp De React", cue: "10", description: "React es la librería más usada enJavaScript para el desarrollo de interfaces." })
     // console.log(JSON.parse(JSON.stringify(bootcamp1)))
-    // const bootcamp2 = await createBootcamp({ title: "Introducción Python", cue: "6", description: "Es un programa intensivo y práctico diseñado para enseñar los fundamentos y aplicaciones avanzadas de Python." })
+    // const bootcamp2 = await createBootcamp({ title: "Bootcamp Desarrollo Web Full Stack.", cue: "12", description: "Crearás aplicaciones web utilizando las tecnologías y lenguajes más actuales y populares, como: JavaScript, nodeJS, Angular, MongoDB, ExpressJS." })
     // console.log(JSON.parse(JSON.stringify(bootcamp2)))
+    // const bootcamp3 = await createBootcamp({ title: "Bootcamp Big Data, Inteligencia Artificial & Machine Learning", cue: "18", description: "Domina Data Science, y todo el ecosistema de lenguajes y herramientas de Big Data, e intégralos con modelos avanzados  de Artificial Intelligence y Machine Learning" })
+    // console.log(JSON.parse(JSON.stringify(bootcamp3)))
 
     //CREAR USUARIO ---->
-    // const user1 = await createUser({ firstName: "Carolina", lastName: "Araya", email: "caro@gmail.com" })
-    // console.log(user1)
-    // const user2 = await createUser({ firstName: "Josefa", lastName: "Almonacid", email: "jose@gmail.com" })
-    // console.log(user2)
-    // const user3 = await createUser({ firstName: "claudio", lastName: "Gutierrez", email: "claudio@gmail.com" })
-    // console.log(user3)
+    // const user1 = await createUser({ firstName: "Mateo", lastName: "Díaz", email: "mateo.diaz@correo.com" })
+    // const user2 = await createUser({ firstName: "Santiago", lastName: "Mejías", email: "santiago.mejias@correo.com" })
+    // const user3 = await createUser({ firstName: "Lucas", lastName: "Rojas", email: "lucas.rojas@correo.com" })
+    // const user4 = await createUser({ firstName: "Facundo", lastName: "Fernandez", email: "facundo.fernandez@correo.com" })
+    // console.log(JSON.parse(JSON.stringify(user3)))
+
 
     //AGREGA USUARIO A BOOTCAMP
-    // await addUserToBootcamp(3,12)
-    // await addUserToBootcamp(2,12)
-    // await addUserToBootcamp(3,13)
-    // await addUserToBootcamp(3,14)
-    // await addUserToBootcamp(2,13)
+    // await addUserToBootcamp(4,19)
+    // await addUserToBootcamp(5,19)
+    // await addUserToBootcamp(6,19)
+    // await addUserToBootcamp(6,20)
+    // await addUserToBootcamp(6,21)
+
 
     //CONSULTAR POR ID BOOTCAMP ----->
     // const bootcampFound =  await findByIdBootcamp(3)
     // console.log(JSON.parse(JSON.stringify(bootcampFound)))
+
+    // [1] - CONSULTAR POR ID BOOTCAMP MÁS USUARIOS ----->
+    try{
+      const bootcampWithUsers = await findByIdBootcampWithUsers(4)
+      console.log(JSON.parse(JSON.stringify(bootcampWithUsers)))
+    } catch(err){
+      console.log("ERROR", err)
+    }
 
     //OBTENER USUARIOS CON SUS BOOTCAMP
     // const allUsersBootcamp = await findAllUsersBootcamp(3)
@@ -62,12 +74,12 @@ import { User } from "./models/user.model.js";
     // console.log(JSON.parse(JSON.stringify(userUpdated)))
 
     //ELIMINACIÓN DE USUARIO ------->
-    try {
-      const userDeleted = await deleteUserById(12);
-      console.log(JSON.parse(JSON.stringify(userDeleted)));
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const userDeleted = await deleteUserById(18);
+    //   console.log(JSON.parse(JSON.stringify(userDeleted)));
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
     console.log(clc.green("Conexión a base de datos éxitosa"));
   } catch (err) {

@@ -33,7 +33,7 @@ const addUserToBootcamp = (id_bootcamp, id_user) => {
 const findByIdBootcamp = (id_bootcamp) => {
     return new Promise(async (resolve, reject)=>{
         try{
-            const bootcamp = await Bootcamp.findByPk(id_bootcamp)
+            const bootcamp = await Bootcamp.findByPk(id_bootcamp, {})
             if(!bootcamp){
                 return reject("Id de bootcamp ingresado no existe en los registros")
             }
@@ -43,7 +43,25 @@ const findByIdBootcamp = (id_bootcamp) => {
             reject(err)
         }
     })
+}
+const findByIdBootcampWithUsers = (id_bootcamp) => {
+  return new Promise( async (resolve, reject)=>{
+    try{
+      const bootcamp = await Bootcamp.findByPk(id_bootcamp, {
+        include: {
+          model: User,
+          as: "users"
+        }
+      })
+      if(!bootcamp){
+        reject({ message: "El Id de bootcamp no es encuentra en los registros." })
+      }
+      resolve(bootcamp)
+    } catch(err){
+      reject({ message: "Error en la consulta de bootcamp con usuarios" })
+    }
 
+  })
 }
 
 const findAllUsersBootcamp = (id_bootcamp) => {
@@ -63,4 +81,4 @@ const findAllUsersBootcamp = (id_bootcamp) => {
     })
 }
 
-export { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp };
+export { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp, findByIdBootcampWithUsers };

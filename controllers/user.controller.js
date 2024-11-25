@@ -3,7 +3,9 @@ import clc from "cli-color";
 const createUser = (dataUser) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const user = await User.create(dataUser);
+      const user = await User.create(dataUser,{
+          returning: true
+      });
       resolve(user);
     } catch (err) {
       reject(err);
