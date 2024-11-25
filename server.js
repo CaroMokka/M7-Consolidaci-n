@@ -10,6 +10,7 @@ import {
   createUser,
   findUserById,
   findAll,
+  updateUserById,
 } from "./controllers/user.controller.js";
 import { User } from "./models/user.model.js";
 
@@ -50,12 +51,14 @@ import { User } from "./models/user.model.js";
     // const bootcampsUser = await findUserById(7)
     // console.log(JSON.parse(JSON.stringify(bootcampsUser)))
 
-    //OBTENER TODOS LOS USUARIOS INNCLUYENDO LOS BOOTCAMP
-    const {users, bootcamps} = await findAll();
-    //console.log(JSON.parse(JSON.stringify(allUsersBootcamps)));
-    console.log("Usuarios con Bootcamps:", JSON.parse(JSON.stringify(users)));
-    console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
-    //console.log(JSON.parse(JSON.stringify(allUsersBootcamps)))
+    //OBTENER TODOS LOS USUARIOS INNCLUYENDO LOS BOOTCAMP ------->
+    // const {users, bootcamps} = await findAll();
+    // console.log("Usuarios con Bootcamps:", JSON.parse(JSON.stringify(users)));
+    // console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
+    
+    //ACTUALIZAR UN USUARIO
+    const userUpdated = await updateUserById(3, {firstName: "Pedro", lastName: "Almodovar", email: "p.almo@gmail.com"})
+    console.log(JSON.parse(JSON.stringify(userUpdated)))
 
     console.log(clc.green("Conexión a base de datos éxitosa"));
   } catch (err) {

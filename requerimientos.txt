@@ -2,7 +2,7 @@
     OK - Crear y guardar usuario llamado createUser()
     OK - Obtener los bootcamps de un usuario llamado findUserById()
     OK - Obtener todos los usuarios incluyendo, los bootcamps llamado findAll()
-    - Actualizar usuario por ID llamado updateUserById()
+    OK - Actualizar usuario por ID llamado updateUserById()
     - Eliminar usuario por ID llamado deleteUserById()
 
 - Controllers bootcamp
