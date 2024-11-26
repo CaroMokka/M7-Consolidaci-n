@@ -52,6 +52,26 @@ const findAll = () => {
     }
   });
 };
+
+const findByIdUserWithBootcamps = (id_user) => {
+  return new Promise( async (resolve, reject)=>{
+    try{
+      const user = await User.findByPk(id_user, {
+        include: {
+          model: Bootcamp,
+          as: "bootcamps"
+        }
+      })
+      if(!user){
+        reject({ message: "El Id de usuario no es encuentra en los registros." })
+      }
+      resolve(user)
+    } catch(err){
+      reject({ message: "Error en la consulta de usuario con bootcamps" })
+    }
+
+  })
+}
 const updateUserById = (id_user, dataUser) => {
   return new Promise( async (resolve, reject) => {
     try {
@@ -81,4 +101,4 @@ const deleteUserById = (id_user) => {
     })
 }
 
-export { createUser, findUserById, findAll, updateUserById, deleteUserById };
+export { createUser, findUserById, findAll, updateUserById, deleteUserById, findByIdUserWithBootcamps };

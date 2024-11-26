@@ -14,6 +14,7 @@ import {
   findAll,
   updateUserById,
   deleteUserById,
+  findByIdUserWithBootcamps,
 } from "./controllers/user.controller.js";
 import { User } from "./models/user.model.js";
 
@@ -86,13 +87,19 @@ import { User } from "./models/user.model.js";
     // }
 
     //LISTAR TODOS LOS BOOTCAMPS CON SUS USUARIOS -------->
-    try{
-      const allBootcampsWithAllUsers = await findAllBootcampsAndUsers()
-      console.log(JSON.parse(JSON.stringify(allBootcampsWithAllUsers)))
+    // try{
+    //   const allBootcampsWithAllUsers = await findAllBootcampsAndUsers()
+    //   console.log(JSON.parse(JSON.stringify(allBootcampsWithAllUsers)))
 
-    }catch(err){
-      console.log(err)
-    }
+    // }catch(err){
+    //   console.log(err)
+    // }
+
+    // CONSULTAR UN USUARIO POR ID, INCLUYENDO LOS BOOTCAMP
+    try{
+      const userIdWithBootcamps = await findByIdUserWithBootcamps(19)
+      console.log(JSON.parse(JSON.stringify(userIdWithBootcamps)))
+    }catch(err){console.log(err)}
 
 
 
