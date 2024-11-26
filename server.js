@@ -42,8 +42,8 @@ import { User } from "./models/user.model.js";
     // console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
 
     // ACTUALIZAR UN USUARIO
-    // const userUpdated = await updateUserById(3, {firstName: "Pedro", lastName: "Almodovar", email: "p.almo@gmail.com"})
-    // console.log(JSON.parse(JSON.stringify(userUpdated)))
+    const userUpdated = await updateUserById(19, {firstName: "Pedro", lastName: "Sánchez", email: "pedro.sanchez@gmail.com"})
+    console.log(JSON.parse(JSON.stringify(userUpdated)))
 
     // ELIMINACIÓN DE USUARIO ------->
     // try {
@@ -53,7 +53,13 @@ import { User } from "./models/user.model.js";
     //   console.log(err);
     // }
 
-    // BOOTCAMP METHOD -------------------------------------
+    // CONSULTAR UN USUARIO POR ID, INCLUYENDO LOS BOOTCAMP ------->
+    // try{
+    //   const userIdWithBootcamps = await findByIdUserWithBootcamps(19)
+    //   console.log(JSON.parse(JSON.stringify(userIdWithBootcamps)))
+    // }catch(err){console.log(err)}
+
+    // BOOTCAMP METHODS -------------------------------------
 
     // CREAR BOOTCAMP ---->
     // const bootcamp1 = await createBootcamp({ title: "Introduciendo El Bootcamp De React", cue: "10", description: "React es la librería más usada enJavaScript para el desarrollo de interfaces." })
@@ -90,16 +96,11 @@ import { User } from "./models/user.model.js";
     // try{
     //   const allBootcampsWithAllUsers = await findAllBootcampsAndUsers()
     //   console.log(JSON.parse(JSON.stringify(allBootcampsWithAllUsers)))
-
     // }catch(err){
     //   console.log(err)
     // }
 
-    // CONSULTAR UN USUARIO POR ID, INCLUYENDO LOS BOOTCAMP
-    try{
-      const userIdWithBootcamps = await findByIdUserWithBootcamps(19)
-      console.log(JSON.parse(JSON.stringify(userIdWithBootcamps)))
-    }catch(err){console.log(err)}
+    
 
 
 

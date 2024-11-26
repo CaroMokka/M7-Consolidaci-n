@@ -15,6 +15,6 @@
     OK - Consultando el Bootcamp por id, incluyendo los usuarios.
     OK - Listar todos los Bootcamp con sus usuarios.
     OK - Consultar un usuario por id, incluyendo los Bootcamp
-    - Listar los usuarios con sus Bootcamp
-    - Actualizar el usuario según su id; por ejemplo: actualizar el usuario con id=1 por Pedro Sánchez
+    OK - Listar los usuarios con sus Bootcamps (findAll() en User)
+    OK - Actualizar el usuario según su id; por ejemplo: actualizar el usuario con id=1 por Pedro Sánchez. (updateUserById() en user.controller)
     - Eliminar un usuario por id; por ejemplo: el usuario con id=1.
