@@ -13,7 +13,7 @@
 
 - Consultas finales
     OK - Consultando el Bootcamp por id, incluyendo los usuarios.
-    - Listar todos los Bootcamp con sus usuarios.
+    OK - Listar todos los Bootcamp con sus usuarios.
     - Consultar un usuario por id, incluyendo los Bootcamp
     - Listar los usuarios con sus Bootcamp
     - Actualizar el usuario según su id; por ejemplo: actualizar el usuario con id=1 por Pedro Sánchez

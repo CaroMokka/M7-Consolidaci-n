@@ -81,4 +81,27 @@ const findAllUsersBootcamp = (id_bootcamp) => {
     })
 }
 
-export { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp, findByIdBootcampWithUsers };
+const findAllBootcampsAndUsers = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const bootcamps = await Bootcamp.findAll({
+        include: {
+          model: User,
+          as: "users",
+        },
+      });
+      const users = await User.findAll({
+        include: {
+          model: Bootcamp,
+          as: "bootcamps",
+        },
+      });
+      resolve({ bootcamps, users });
+      //resolve({usersBootcamps, bootcampsUsers})
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+export { createBootcamp, addUserToBootcamp, findByIdBootcamp, findAllUsersBootcamp, findByIdBootcampWithUsers, findAllBootcampsAndUsers };

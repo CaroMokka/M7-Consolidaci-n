@@ -6,6 +6,7 @@ import {
   findByIdBootcamp,
   findAllUsersBootcamp,
   findByIdBootcampWithUsers,
+  findAllBootcampsAndUsers,
 } from "./controllers/bootcamp.controller.js";
 import {
   createUser,
@@ -20,7 +21,40 @@ import { User } from "./models/user.model.js";
   try {
     await sequelize.sync({ alter: true });
     // const listadoBootcamps = await Bootcamp.findAll()
-    //CREAR BOOTCAMP ---->
+    // USER METHODS -------------------------------------
+
+    // CREAR USUARIO ---->
+    // const user1 = await createUser({ firstName: "Mateo", lastName: "Díaz", email: "mateo.diaz@correo.com" })
+    // const user2 = await createUser({ firstName: "Santiago", lastName: "Mejías", email: "santiago.mejias@correo.com" })
+    // const user3 = await createUser({ firstName: "Lucas", lastName: "Rojas", email: "lucas.rojas@correo.com" })
+    // const user4 = await createUser({ firstName: "Facundo", lastName: "Fernandez", email: "facundo.fernandez@correo.com" })
+    // console.log(JSON.parse(JSON.stringify(user3)))
+
+    // OBTENER LOS BOOTCAMPS DE UN ID USUARIO
+    // const bootcampsUser = await findUserById(7)
+    // console.log(JSON.parse(JSON.stringify(bootcampsUser)))
+
+
+    // OBTENER TODOS LOS USUARIOS INNCLUYENDO LOS BOOTCAMP ------->
+    // const {users, bootcamps} = await findAll();
+    // console.log("Usuarios con Bootcamps:", JSON.parse(JSON.stringify(users)));
+    // console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
+
+    // ACTUALIZAR UN USUARIO
+    // const userUpdated = await updateUserById(3, {firstName: "Pedro", lastName: "Almodovar", email: "p.almo@gmail.com"})
+    // console.log(JSON.parse(JSON.stringify(userUpdated)))
+
+    // ELIMINACIÓN DE USUARIO ------->
+    // try {
+    //   const userDeleted = await deleteUserById(18);
+    //   console.log(JSON.parse(JSON.stringify(userDeleted)));
+    // } catch (err) {
+    //   console.log(err);
+    // }
+
+    // BOOTCAMP METHOD -------------------------------------
+
+    // CREAR BOOTCAMP ---->
     // const bootcamp1 = await createBootcamp({ title: "Introduciendo El Bootcamp De React", cue: "10", description: "React es la librería más usada enJavaScript para el desarrollo de interfaces." })
     // console.log(JSON.parse(JSON.stringify(bootcamp1)))
     // const bootcamp2 = await createBootcamp({ title: "Bootcamp Desarrollo Web Full Stack.", cue: "12", description: "Crearás aplicaciones web utilizando las tecnologías y lenguajes más actuales y populares, como: JavaScript, nodeJS, Angular, MongoDB, ExpressJS." })
@@ -28,58 +62,47 @@ import { User } from "./models/user.model.js";
     // const bootcamp3 = await createBootcamp({ title: "Bootcamp Big Data, Inteligencia Artificial & Machine Learning", cue: "18", description: "Domina Data Science, y todo el ecosistema de lenguajes y herramientas de Big Data, e intégralos con modelos avanzados  de Artificial Intelligence y Machine Learning" })
     // console.log(JSON.parse(JSON.stringify(bootcamp3)))
 
-    //CREAR USUARIO ---->
-    // const user1 = await createUser({ firstName: "Mateo", lastName: "Díaz", email: "mateo.diaz@correo.com" })
-    // const user2 = await createUser({ firstName: "Santiago", lastName: "Mejías", email: "santiago.mejias@correo.com" })
-    // const user3 = await createUser({ firstName: "Lucas", lastName: "Rojas", email: "lucas.rojas@correo.com" })
-    // const user4 = await createUser({ firstName: "Facundo", lastName: "Fernandez", email: "facundo.fernandez@correo.com" })
-    // console.log(JSON.parse(JSON.stringify(user3)))
-
-
-    //AGREGA USUARIO A BOOTCAMP
+    // AGREGA USUARIO A BOOTCAMP ------->
     // await addUserToBootcamp(4,19)
     // await addUserToBootcamp(5,19)
     // await addUserToBootcamp(6,19)
     // await addUserToBootcamp(6,20)
     // await addUserToBootcamp(6,21)
 
-
-    //CONSULTAR POR ID BOOTCAMP ----->
+    // CONSULTAR POR ID BOOTCAMP ------->
     // const bootcampFound =  await findByIdBootcamp(3)
     // console.log(JSON.parse(JSON.stringify(bootcampFound)))
 
-    // [1] - CONSULTAR POR ID BOOTCAMP MÁS USUARIOS ----->
-    try{
-      const bootcampWithUsers = await findByIdBootcampWithUsers(4)
-      console.log(JSON.parse(JSON.stringify(bootcampWithUsers)))
-    } catch(err){
-      console.log("ERROR", err)
-    }
-
-    //OBTENER USUARIOS CON SUS BOOTCAMP
+    // OBTENER USUARIOS CON SUS BOOTCAMP --------->
     // const allUsersBootcamp = await findAllUsersBootcamp(3)
     // console.log(JSON.parse(JSON.stringify(allUsersBootcamp)))
 
-    //OBTENER LOS BOOTCAMPS DE UN USUARIO
-    // const bootcampsUser = await findUserById(7)
-    // console.log(JSON.parse(JSON.stringify(bootcampsUser)))
-
-    //OBTENER TODOS LOS USUARIOS INNCLUYENDO LOS BOOTCAMP ------->
-    // const {users, bootcamps} = await findAll();
-    // console.log("Usuarios con Bootcamps:", JSON.parse(JSON.stringify(users)));
-    // console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
-
-    //ACTUALIZAR UN USUARIO
-    // const userUpdated = await updateUserById(3, {firstName: "Pedro", lastName: "Almodovar", email: "p.almo@gmail.com"})
-    // console.log(JSON.parse(JSON.stringify(userUpdated)))
-
-    //ELIMINACIÓN DE USUARIO ------->
-    // try {
-    //   const userDeleted = await deleteUserById(18);
-    //   console.log(JSON.parse(JSON.stringify(userDeleted)));
-    // } catch (err) {
-    //   console.log(err);
+    // CONSULTAR BOOTCAMP POR ID MÁS USUARIOS -------->
+    // try{
+    //   const bootcampWithUsers = await findByIdBootcampWithUsers(4)
+    //   console.log(JSON.parse(JSON.stringify(bootcampWithUsers)))
+    // } catch(err){
+    //   console.log("ERROR", err)
     // }
+
+    //LISTAR TODOS LOS BOOTCAMPS CON SUS USUARIOS -------->
+    try{
+      const allBootcampsWithAllUsers = await findAllBootcampsAndUsers()
+      console.log(JSON.parse(JSON.stringify(allBootcampsWithAllUsers)))
+
+    }catch(err){
+      console.log(err)
+    }
+
+
+
+
+    
+
+
+    
+
+    
 
     console.log(clc.green("Conexión a base de datos éxitosa"));
   } catch (err) {
