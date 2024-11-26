@@ -42,16 +42,16 @@ import { User } from "./models/user.model.js";
     // console.log("Bootcamps con Usuarios:", JSON.parse(JSON.stringify(bootcamps)));
 
     // ACTUALIZAR UN USUARIO
-    const userUpdated = await updateUserById(19, {firstName: "Pedro", lastName: "Sánchez", email: "pedro.sanchez@gmail.com"})
-    console.log(JSON.parse(JSON.stringify(userUpdated)))
+    // const userUpdated = await updateUserById(19, {firstName: "Pedro", lastName: "Sánchez", email: "pedro.sanchez@gmail.com"})
+    // console.log(JSON.parse(JSON.stringify(userUpdated)))
 
     // ELIMINACIÓN DE USUARIO ------->
-    // try {
-    //   const userDeleted = await deleteUserById(18);
-    //   console.log(JSON.parse(JSON.stringify(userDeleted)));
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const userDeleted = await deleteUserById(20);
+      console.log(JSON.parse(JSON.stringify(userDeleted)));
+    } catch (err) {
+      console.log(err);
+    }
 
     // CONSULTAR UN USUARIO POR ID, INCLUYENDO LOS BOOTCAMP ------->
     // try{
